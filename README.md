@@ -259,7 +259,7 @@ BEGIN
 		WHERE  u.Name = @StudentName
 END
 ```
-AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu görünüm, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar. Veri alır ve birleştirir.
+AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu View, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar.
 View sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
 Bu da veritabanı işlemlerini daha kolay ve etkili hale getirir.
 
