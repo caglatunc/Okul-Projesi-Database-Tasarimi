@@ -240,6 +240,7 @@ CREATE TABLE [dbo].[Teachers](
 ```
 GetStudentExamResults Stored Procedure, belirtilen öğrencinin veritabanındaki sınav sonuçlarını almak için kullanılır. 
 Tek bir çağrı ile belirli bir öğrencinin sınav sonuçları elde edilebilir. 
+
 Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde bu prosedürü çağırabilirsiniz. Bu sayede, ayrıntılı bir sorguyu tekrar tekrar yazmak zorunda kalmazsınız ve veritabanı işlemleri daha basit ve etkili bir şekilde gerçekleştirilir.
 
 ```SQL
