@@ -57,7 +57,7 @@ CREATE TABLE [dbo].[Courses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ````
-ExamTypes tablosu, sınav türlerini/aşamalarını içerir.
+ExamTypes tablosu, sınav türlerini içerir.
 1) [Id]           : Her bir sınav türüne benzersiz bir kimlik (UserID) atanır. 
 2) [ExamTypeName] : Sınav türlerinin adlarını saklamak için kullanılır.
    
@@ -138,8 +138,13 @@ CREATE TABLE [dbo].[Departments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-
-
+StudentTranscripts tablosu, öğrencilerin transkript bilgilerini içerir.
+1) [Id] 		: Her bir öğrenci transkripti için benzersiz bir kimlik atamak için kullanılır.
+2) [StudentId]		: Transkriptin hangi öğrenciye ait olduğunu belirtmek için kullanılır.
+3) [CourseId] 		: Transkriptin hangi dersle ilişkili olduğunu belirtmek için kullanılır.
+4) [MidtermGrade] 	: Öğrencinin vize notunu saklamak için kullanılır.
+5) [FinalGrade] 	: Öğrencinin final notunu saklamak için kullanılır. 
+6) [OverallGrade]	: Öğrencinin dersin genel notunu saklamak için kullanılır.
 
 ```SQL
 CREATE TABLE [dbo].[StudentTranscripts](
@@ -155,3 +160,53 @@ CREATE TABLE [dbo].[StudentTranscripts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
+AssistantPrincipals tablosu, Müdür Yardımcılarının bilgilerini içerir.
+1) [Id]		:  her bir yardımcı müdür için benzersiz bir kimlik atamak için kullanılır.
+2) [UserId]	: Müdür Yardımcısının kullanıcı kimliğini belirtmek için kullanılır.
+
+```SQL
+CREATE TABLE [dbo].[AssistantPrincipals](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+ CONSTRAINT [PK_AssistantPrincipals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+```
+Attendances tablosu, öğrencilerin katılım durumlarını içerir.
+1) [Id]		: Her bir katılım durumu için benzersiz bir kimlik atamak için kullanılır.
+2) [StudentId]	: Katılım durumunun hangi öğrenciye ait olduğunu belirtmek için kullanılır.	 
+3) [Date]	: Katılımın gerçekleştiği tarihi saklamak için kullanılır. 
+4) [StatusId]	: Katılım durumunu belirtmek için kullanılır.
+
+```SQL
+CREATE TABLE [dbo].[Attendances](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[StudentId] [int] NOT NULL,
+	[Date] [date] NOT NULL,
+	[StatusId] [int] NOT NULL,
+ CONSTRAINT [PK_Attendances] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+```
+AttendanceStatus tablosu, Bu tablo, devamsızlık durumlarının açıklamalarını içerir. 
+1) [Id]		: Her bir katılım durumu için benzersiz bir kimlik atamak için kullanılır.
+2) [Name]	: "Geldi", "Gelmedi" gibi durumların adları (Name) bu tabloda saklanır.
+
+```SQL
+CREATE TABLE [dbo].[AttendanceStatus](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](10) NOT NULL,
+ CONSTRAINT [PK_AttendanceStatus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+```
+
+
+
