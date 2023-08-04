@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[ExamResults](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-Classes tablosu,  okuldaki sınıfların adını içerir.(Hazırlık, Sınıf1 etc)
+Classes tablosu,  okuldaki sınıfların adını içerir.(Hazırlık, Sınıf1 vb)
 1) [Id]   : Her bir sınıf için benzersiz bir kimlik atamak için kullanılır.
 2) [Name] : Sınıfın adını saklamak için kullanılır. 
 
