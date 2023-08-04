@@ -1,6 +1,7 @@
 ## Okul-Projesi-Database-Tasarimi
 #Eğitim Projemdeki SQL Ödevim 
 
+![image](https://github.com/caglatunc/Okul-Projesi-Database-Tasarimi/assets/95507765/6d7d7d15-c10d-4c2b-b665-2a1ad0a4f417)
 
 Users tablosu, okulla ilişkili her türden kişi için genel bilgileri içerir. (Students, Teachers, Principals etc.)
 1) [Id]		  : Her kullanıcıya benzersiz bir kimlik (UserID) atanır. 
