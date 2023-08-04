@@ -260,9 +260,10 @@ BEGIN
 END
 ```
 AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu görünüm, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar. Veri alır ve birleştirir.
-
-Görünüm sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
+View sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
 Bu da veritabanı işlemlerini daha kolay ve etkili hale getirir.
+
+Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için SELECT * FROM AllStudentExamResultsView WHERE StudentName = 'Cagla Tunc'; şeklinde VIEW'a sorgu ataması yapabilirsiniz.
 
 ```SQL
 ALTER VIEW [dbo].[AllStudentExamResultsView] AS
