@@ -259,7 +259,7 @@ BEGIN
 		WHERE  u.Name = @StudentName
 END
 ```
-AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu View, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar.
+AllStudentExamResultsView adında bir view oluşturuldu. Bu View, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar.
 View sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
 
 Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için SELECT * FROM AllStudentExamResultsView WHERE StudentName = 'Cagla Tunc'; şeklinde VIEW'a sorgu ataması yapabilirsiniz.
