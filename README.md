@@ -237,4 +237,22 @@ CREATE TABLE [dbo].[Teachers](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+```
+# GetStudentExamResults Stored Procedure, veritabanında belirtilen öğrencinin sınav sonuçlarını almak için kullanılabilir. Örneğin, EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde çağırarak "Cagla Tunc" adlı öğrencinin sınav sonuçlarını elde edebilirsiniz.
 
+```SQL
+ALTER PROCEDURE [dbo].[GetStudentExamResults]
+      @StudentName varchar(50)
+AS
+BEGIN
+		SELECT u.Name as StudentName, c.Name as CourseName,e.ExamDate, et.ExamTypeName, er.Grade as AverageGrade
+		from Exams e
+
+		INNER JOIN Courses c on e.CoursesId = c.Id
+		INNER JOIN ExamResults er on e.Id= er.ExamId
+		INNER JOIN ExamTypes et ON e.ExamTypesId = et.Id
+		INNER JOIN Students s ON  er.StudentId = s.Id
+		INNER JOIN Users u on s.UserId=u.Id
+		WHERE  u.Name = @StudentName
+END
+```
