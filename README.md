@@ -259,3 +259,21 @@ BEGIN
 		WHERE  u.Name = @StudentName
 END
 ```
+AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu görünüm, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar. Veri alır ve birleştirir.
+
+Görünüm sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
+Bu da veritabanı işlemlerini daha kolay ve etkili hale getirir.
+
+```SQL
+ALTER VIEW [dbo].[AllStudentExamResultsView] AS
+
+
+SELECT u.Name as StudentName, c.Name as CourseName,e.ExamDate, et.ExamTypeName, er.Grade as Grades
+		from Exams e
+
+		INNER JOIN Courses c on e.CoursesId = c.Id
+		INNER JOIN ExamResults er on e.Id= er.ExamId
+		INNER JOIN ExamTypes et ON e.ExamTypesId = et.Id
+		INNER JOIN Students s ON  er.StudentId = s.Id
+		INNER JOIN Users u on s.UserId=u.Id
+```
