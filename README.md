@@ -241,7 +241,7 @@ CREATE TABLE [dbo].[Teachers](
 GetStudentExamResults Stored Procedure, belirtilen öğrencinin veritabanındaki sınav sonuçlarını almak için kullanılır. 
 Tek bir çağrı ile belirli bir öğrencinin sınav sonuçları elde edilebilir. 
 
-Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde bu prosedürü çağırabilirsiniz. Bu sayede, ayrıntılı bir sorguyu tekrar tekrar yazmak zorunda kalmazsınız ve veritabanı işlemleri daha basit ve etkili bir şekilde gerçekleştirilir.
+Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde bu prosedürü çağırabilirsiniz. Bu sayede, ayrıntılı bir sorguyu tekrar tekrar yazmak zorunda kalmazsınız.
 
 ```SQL
 ALTER PROCEDURE [dbo].[GetStudentExamResults]
@@ -261,7 +261,6 @@ END
 ```
 AllStudentExamResultsView adında bir görünüm oluşturuldu. Bu View, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar.
 View sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
-Bu da veritabanı işlemlerini daha kolay ve etkili hale getirir.
 
 Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için SELECT * FROM AllStudentExamResultsView WHERE StudentName = 'Cagla Tunc'; şeklinde VIEW'a sorgu ataması yapabilirsiniz.
 
