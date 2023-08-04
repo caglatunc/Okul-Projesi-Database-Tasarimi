@@ -238,9 +238,9 @@ CREATE TABLE [dbo].[Teachers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-GetStudentExamResults Stored Procedure, veritabanında belirtilen öğrencinin sınav sonuçlarını almak için kullanılabilir. 
-
-Örneğin, EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde çağırarak "Cagla Tunc" adlı öğrencinin sınav sonuçlarını elde edebilirsiniz.
+GetStudentExamResults Stored Procedure, belirtilen öğrencinin veritabanındaki sınav sonuçlarını almak için kullanılır. 
+Tek bir çağrı ile belirli bir öğrencinin sınav sonuçları elde edilebilir. 
+Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde bu prosedürü çağırabilirsiniz. Bu sayede, ayrıntılı bir sorguyu tekrar tekrar yazmak zorunda kalmazsınız ve veritabanı işlemleri daha basit ve etkili bir şekilde gerçekleştirilir.
 
 ```SQL
 ALTER PROCEDURE [dbo].[GetStudentExamResults]
