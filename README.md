@@ -1,5 +1,5 @@
-# Okul-Projesi-Database-Tasarimi
-#Egitim Projemdeki SQL Odevim 
+## Okul-Projesi-Database-Tasarimi
+#Eğitim Projemdeki SQL Ödevim 
 
 
 Users tablosu, okulla ilişkili her türden kişi için genel bilgileri içerir. (Students, Teachers, Principals etc.)
@@ -161,7 +161,7 @@ CREATE TABLE [dbo].[StudentTranscripts](
 ) ON [PRIMARY]
 ```
 AssistantPrincipals tablosu, Müdür Yardımcılarının bilgilerini içerir.
-1) [Id]		:  her bir yardımcı müdür için benzersiz bir kimlik atamak için kullanılır.
+1) [Id]		: Her bir yardımcı müdür için benzersiz bir kimlik atamak için kullanılır.
 2) [UserId]	: Müdür Yardımcısının kullanıcı kimliğini belirtmek için kullanılır.
 
 ```SQL
@@ -207,6 +207,33 @@ CREATE TABLE [dbo].[AttendanceStatus](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
+Principals tablosu, okuldaki müdürlerin bilgilerini içerir.
+1) [Id]		: Her bir müdür için benzersiz bir kimlik atamak için kullanılır.
+2) [UserId]	: Okul müdürünün kullanıcı kimliğini belirtmek için kullanılır.
 
+```SQL
+CREATE TABLE [dbo].[Principals](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+ CONSTRAINT [PK_Principals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+```
+Teachers tablosu, okuldaki öğretmenlerin bilgilerini içerir.
+1) [Id]		: Her bir öğretmen için benzersiz bir kimlik atamak için kullanılır.
+2) [UserId]	: Öğretmenin kullanıcı kimliğini belirtmek için kullanılır.
+3) [Department]	: Öğretmenin çalıştığı bölümü (department) belirtmek için kullanılır.
 
+```SQL
+CREATE TABLE [dbo].[Teachers](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[Department] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Teachers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 
