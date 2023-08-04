@@ -3,7 +3,7 @@
 
 
 Users tablosu, okulla ilişkili her türden kişi için genel bilgileri içerir. (Students, Teachers, Principals etc.)
-1) [Id]: Her kullanıcıya benzersiz bir kimlik (UserID) atanır. 
+1) [Id]		  : Her kullanıcıya benzersiz bir kimlik (UserID) atanır. 
 2) [Name]         : Bu alanda ilgili kullanıcının ad ve soyad bilgileri tutulur.
 3) [Email]        : Bu alanda kullanıcının e-posta adresi tutulur.
 4) [PhoneNumber]  : Bu alanda kullanıcının telefon numarası tutulur.
