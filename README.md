@@ -1,13 +1,13 @@
 ## OkulDb Project
-#SQL Ödevim 
+#SQL Homework 
 
 ![image](https://github.com/caglatunc/Okul-Projesi-Database-Tasarimi/assets/95507765/6d7d7d15-c10d-4c2b-b665-2a1ad0a4f417)
 
-Users tablosu, okulla ilişkili her türden kişi için genel bilgileri içerir. (Students, Teachers, Principals etc.)
-1) [Id]		  : Her kullanıcıya benzersiz bir kimlik (UserID) atanır. 
-2) [Name]         : Bu alanda ilgili kullanıcının ad ve soyad bilgileri tutulur.
-3) [Email]        : Bu alanda kullanıcının e-posta adresi tutulur.
-4) [PhoneNumber]  : Bu alanda kullanıcının telefon numarası tutulur.
+The Users table contains general information for individuals associated with the school (Students, Teachers, Principals, etc.).
+1) [Id]: Each user is assigned a unique identifier (UserID).
+2) [Name]: This field stores the user's name and surname information.
+3) [Email]: This field stores the user's email address.
+4) [PhoneNumber]: This field stores the user's phone number.
 
 ``` SQL
 CREATE TABLE [dbo].[Users](
@@ -22,11 +22,11 @@ CREATE TABLE [dbo].[Users](
 ) ON [PRIMARY]
 ```
 
-Students tablosu, öğrencilere ait detayları içerir.
-1) [UserId]             : Users tablosu ile UserId alanı üzerinden ilişkilendirilir.
-2) [ParentsContactInfo] : Öğrencinin velisinin iletişim bilgileri tutulur.
-3) [ClassId]            : Kayıtlı olduğu sınıfın ID'si burada tutulur.
-4) [DepartmentId]       : Öğrencinin kayıtlı olduğu bölümün kimliği tutulur. 
+The Students table contains details related to students.
+1) [UserId]: Associated with the UserId field in the Users table.
+2) [ParentsContactInfo]: Stores the contact information of the student's parents.
+3) [ClassId]: Stores the ID of the class the student is enrolled in.
+4) [DepartmentId]: Stores the identity of the department the student is enrolled in.
 
 ```SQL 
 CREATE TABLE [dbo].[Students](
@@ -42,10 +42,10 @@ CREATE TABLE [dbo].[Students](
 ) ON [PRIMARY]
 ```
 
-Courses tablosu, derslere ait detayları içerir.
-1) [Id]        : Her bir ders kaydına benzersiz bir kimlik (UserID) atanır. 
-2) [Name]      : Dersin adını saklamak için kullanılır.
-3) [TeacherId] : Dersin atanmış olduğu öğretmenin kimliğini saklamak için kullanılır.
+The Courses table contains details related to courses.
+1) [Id]: Each course is assigned a unique identifier.
+2) [Name]: Used to store the name of the course.
+3) [TeacherId]: Used to store the identity of the teacher assigned to the course.
 
 ```SQL 
 CREATE TABLE [dbo].[Courses](
@@ -58,9 +58,9 @@ CREATE TABLE [dbo].[Courses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ````
-ExamTypes tablosu, sınav türlerini içerir.
-1) [Id]           : Her bir sınav türüne benzersiz bir kimlik (UserID) atanır. 
-2) [ExamTypeName] : Sınav türlerinin adlarını saklamak için kullanılır.
+The ExamTypes table contains types of exams.
+1) [Id]: A unique identifier (UserID) is assigned to each type of exam.
+2) [ExamTypeName]: Used to store the names of exam types.
    
 ````SQL
 CREATE TABLE [dbo].[ExamTypes](
@@ -73,11 +73,11 @@ CREATE TABLE [dbo].[ExamTypes](
 ) ON [PRIMARY]
 `````
 
-Exams tablosu, yapılan sınavların bilgilerini içerir.
-1) [Id]          : Her bir sınav için benzersiz bir kimlik atanır.
-2) [CoursesId]   : Sınavın hangi dersle ilişkili olduğunu belirtmek için kullanılır.
-3) [ExamDate]    : Sınavın tarihini saklamak için kullanılır.
-4) [ExamTypesId] : Sınavın hangi türde olduğunu belirtmek için kullanılır. 
+The Exams table contains information about the exams conducted.
+1) [Id]: A unique identifier is assigned to each exam.
+2) [CoursesId]: Used to specify the course associated with the exam.
+3) [ExamDate]: Used to store the date of the exam.
+4) [ExamTypesId]: Used to specify the type of exam.
  
 ````SQL
 CREATE TABLE [dbo].[Exams](
@@ -91,11 +91,11 @@ CREATE TABLE [dbo].[Exams](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ````
-ExamResults tablosu, yapılan sınavların sonuçlarını içerir.
-1) [Id]        : Her bir sınav sonucu için benzersiz bir kimlik atanır.
-2) [StudentId] : Sınav sonucunun hangi öğrenciye ait olduğunu belirtmek için kullanılır.
-3) [ExamId]    : Sınav sonucunun hangi sınava ait olduğunu belirtmek için kullanılır.
-4) [Grade]     : Öğrencinin aldığı notu saklamak için kullanılır.
+The ExamResults table contains the results of the exams taken.
+1) [Id]: A unique identifier is assigned to each exam result.
+2) [StudentId]: Used to specify which student the exam result belongs to.
+3) [ExamId]: Used to specify which exam the result belongs to.
+4) [Grade]: Used to store the grade received by the student.
 
 ```SQL
 CREATE TABLE [dbo].[ExamResults](
@@ -109,9 +109,9 @@ CREATE TABLE [dbo].[ExamResults](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-Classes tablosu,  okuldaki sınıfların adını içerir.(Hazırlık, Sınıf1 vb)
-1) [Id]   : Her bir sınıf için benzersiz bir kimlik atamak için kullanılır.
-2) [Name] : Sınıfın adını saklamak için kullanılır. 
+The Classes table contains the names of the classes in the school (e.g., Prep, Class 1, etc.).
+1) [Id]: Used to assign a unique identifier to each class.
+2) [Name]: Used to store the name of the class.
 
 ```SQL
 CREATE TABLE [dbo].[Classes](
@@ -123,10 +123,9 @@ CREATE TABLE [dbo].[Classes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-
-Departments tablosu, okuldaki bölümlerin adını içerir.
-1) [Id]   : Her bir bölüm için benzersiz bir kimlik atamak için kullanılır.
-2) [Name] : Bölümün adını saklamak için kullanılır.
+The Department's table contains the names of the departments in the school.
+1) [Id]: Used to assign a unique identifier to each department.
+2) [Name]: Used to store the name of the department.
 
 
 ```SQL
@@ -139,13 +138,13 @@ CREATE TABLE [dbo].[Departments](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-StudentTranscripts tablosu, öğrencilerin transkript bilgilerini içerir.
-1) [Id] 		: Her bir öğrenci transkripti için benzersiz bir kimlik atamak için kullanılır.
-2) [StudentId]		: Transkriptin hangi öğrenciye ait olduğunu belirtmek için kullanılır.
-3) [CourseId] 		: Transkriptin hangi dersle ilişkili olduğunu belirtmek için kullanılır.
-4) [MidtermGrade] 	: Öğrencinin vize notunu saklamak için kullanılır.
-5) [FinalGrade] 	: Öğrencinin final notunu saklamak için kullanılır. 
-6) [OverallGrade]	: Öğrencinin dersin genel notunu saklamak için kullanılır.
+The StudentTranscripts table contains the transcript information of students.
+1) [Id]: Used to assign a unique identifier to each student transcript.
+2) [StudentId]: Used to specify which student the transcript belongs to.
+3) [CourseId]: Used to specify which course the transcript is related to.
+4) [MidtermGrade]: Used to store the midterm grade of the student.
+5) [FinalGrade]: Used to store the final grade of the student.
+6) [OverallGrade]: Used to store the overall grade of the student in the course.
 
 ```SQL
 CREATE TABLE [dbo].[StudentTranscripts](
@@ -161,9 +160,9 @@ CREATE TABLE [dbo].[StudentTranscripts](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-AssistantPrincipals tablosu, Müdür Yardımcılarının bilgilerini içerir.
-1) [Id]		: Her bir yardımcı müdür için benzersiz bir kimlik atamak için kullanılır.
-2) [UserId]	: Müdür Yardımcısının kullanıcı kimliğini belirtmek için kullanılır.
+The Assistant Principal's table contains information about the assistant principals.
+1) [Id]: Used to assign a unique identifier to each assistant principal.
+2) [UserId]: Used to specify the user ID of the assistant principal.
 
 ```SQL
 CREATE TABLE [dbo].[AssistantPrincipals](
@@ -175,11 +174,12 @@ CREATE TABLE [dbo].[AssistantPrincipals](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-Attendances tablosu, öğrencilerin katılım durumlarını içerir.
-1) [Id]		: Her bir katılım durumu için benzersiz bir kimlik atamak için kullanılır.
-2) [StudentId]	: Katılım durumunun hangi öğrenciye ait olduğunu belirtmek için kullanılır.	 
-3) [Date]	: Katılımın gerçekleştiği tarihi saklamak için kullanılır. 
-4) [StatusId]	: Katılım durumunu belirtmek için kullanılır.
+
+The Attendances table contains information about student attendance statuses.
+1) [Id]: Used to assign a unique identifier to each attendance record.
+2) [StudentId]: Used to specify which student the attendance status belongs to.
+3) [Date]: Used to store the date of the attendance.
+4) [StatusId]: Used to specify the attendance status.
 
 ```SQL
 CREATE TABLE [dbo].[Attendances](
@@ -194,9 +194,9 @@ CREATE TABLE [dbo].[Attendances](
 ) ON [PRIMARY]
 GO
 ```
-AttendanceStatus tablosu, Bu tablo, devamsızlık durumlarının açıklamalarını içerir. 
-1) [Id]		: Her bir katılım durumu için benzersiz bir kimlik atamak için kullanılır.
-2) [Name]	: "Geldi", "Gelmedi" gibi durumların adları (Name) bu tabloda saklanır.
+The AttendanceStatus table contains descriptions of attendance statuses.
+1) [Id]: Used to assign a unique identifier to each attendance status.
+2) [Name]: Used to store the names of attendance statuses such as "Present" or "Absent".
 
 ```SQL
 CREATE TABLE [dbo].[AttendanceStatus](
@@ -208,9 +208,9 @@ CREATE TABLE [dbo].[AttendanceStatus](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-Principals tablosu, okuldaki müdürlerin bilgilerini içerir.
-1) [Id]		: Her bir müdür için benzersiz bir kimlik atamak için kullanılır.
-2) [UserId]	: Okul müdürünün kullanıcı kimliğini belirtmek için kullanılır.
+The Principals table contains information about the principals in the school.
+1) [Id]: Used to assign a unique identifier to each principal.
+2) [UserId]: Used to specify the user ID of the principal.
 
 ```SQL
 CREATE TABLE [dbo].[Principals](
@@ -222,10 +222,10 @@ CREATE TABLE [dbo].[Principals](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-Teachers tablosu, okuldaki öğretmenlerin bilgilerini içerir.
-1) [Id]		: Her bir öğretmen için benzersiz bir kimlik atamak için kullanılır.
-2) [UserId]	: Öğretmenin kullanıcı kimliğini belirtmek için kullanılır.
-3) [Department]	: Öğretmenin çalıştığı bölümü (department) belirtmek için kullanılır.
+The Teachers table contains information about the teachers in the school.
+1) [Id]: Used to assign a unique identifier to each teacher.
+2) [UserId]: Used to specify the user ID of the teacher.
+3) [Department]: Used to specify the department in which the teacher works.
 
 ```SQL
 CREATE TABLE [dbo].[Teachers](
@@ -238,10 +238,10 @@ CREATE TABLE [dbo].[Teachers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 ```
-GetStudentExamResults Stored Procedure, belirtilen öğrencinin veritabanındaki sınav sonuçlarını almak için kullanılır. 
-Tek bir çağrı ile belirli bir öğrencinin sınav sonuçları elde edilebilir. 
+The GetStudentExamResults Stored Procedure is used to retrieve the exam results of a specified student from the database.
+With a single call, the exam results of a specific student can be obtained.
 
-Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için EXEC GetStudentExamResults 'Cagla Tunc'; şeklinde bu prosedürü çağırabilirsiniz. Bu sayede, ayrıntılı bir sorguyu tekrar tekrar yazmak zorunda kalmazsınız.
+For example, to retrieve the exam results of a student named "Cagla Tunc," you can call this procedure as follows: EXEC GetStudentExamResults 'Cagla Tunc'; This eliminates the need to repeatedly write a detailed query.
 
 ```SQL
 ALTER PROCEDURE [dbo].[GetStudentExamResults]
@@ -259,10 +259,11 @@ BEGIN
 		WHERE  u.Name = @StudentName
 END
 ```
-AllStudentExamResultsView adında bir view oluşturuldu. Bu View, veritabanında öğrencilerin sınav sonuçlarını içeren ayrıntılı bilgileri bir arada sunar.
-View sayesinde bu verileri tekrar tekrar sorgulamak veya birleştirmek zorunda kalmadan, tek bir sorgu ile istenilen öğrencilerin sınav sonuçlarına ulaşabilirsiniz. 
+An AllStudentExamResultsView has been created as a view. This view presents detailed information about students' exam results in the database. 
+Using this view, you can access the exam results of desired students with a single query without the need to repeatedly query or merge the data.
 
-Örneğin, "Cagla Tunc" adlı öğrencinin sınav sonuçlarını almak için SELECT * FROM AllStudentExamResultsView WHERE StudentName = 'Cagla Tunc'; şeklinde VIEW'a sorgu ataması yapabilirsiniz.
+For example, to retrieve the exam results of a student named "Cagla Tunc," you can assign a query to the view as follows: SELECT * FROM AllStudentExamResultsView WHERE StudentName = 'Cagla Tunc';
+This query provides access to the exam results of the specified student without the need for additional joins or queries.
 
 ```SQL
 ALTER VIEW [dbo].[AllStudentExamResultsView] AS
